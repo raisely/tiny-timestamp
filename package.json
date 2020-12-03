@@ -1,0 +1,19 @@
+{
+	"name": "tiny-timestamp",
+	"version": "1.0.0",
+	"description": "Create a tiny representation of the timestamp",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha test.js"
+	},
+	"keywords": [
+		"timestamp",
+		"small",
+		"hash"
+	],
+	"author": "Raisely",
+	"license": "NoHarm",
+	"devDependencies": {
+		"mocha": "^8.2.1"
+	}
+}

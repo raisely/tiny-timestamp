@@ -1,0 +1,174 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"inputs": [
+		{
+			"id": "grep",
+			"type": "promptString",
+			"default": "User Routes",
+			"description": "Speciy test suite to run"
+		}
+	],
+	"configurations": [
+		{
+			"name": "Houston Test Current File",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/houston/node_modules/mocha/bin/_mocha",
+			"cwd": "${workspaceFolder}/houston",
+			"args": ["-w", "-u", "bdd", "--colors", "${file}"],
+			"env": {
+				"NODE_ENV": "test"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "Edge/V2 Test Current File",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/houston/node_modules/mocha/bin/_mocha",
+			"cwd": "${workspaceFolder}/api",
+			"args": ["-w", "-u", "bdd", "--colors", "${file}"],
+			"env": {
+				"NODE_ENV": "test"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "Raisely Debug API",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/api/server.js",
+			"cwd": "${workspaceFolder}/api",
+			"args": [],
+			"env": {
+				"DEBUG_SQL": "1",
+				"NODE_ENV": "development"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "Raisely Debug Worker",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/api/worker/index.js",
+			"cwd": "${workspaceFolder}/api",
+			"args": [],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "Houston Debug API",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/houston/server.js",
+			"cwd": "${workspaceFolder}/houston",
+			"args": [],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "Houston Test Current File",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/houston/node_modules/mocha/bin/_mocha",
+			"cwd": "${workspaceFolder}/houston",
+			"args": ["-w", "-u", "bdd", "--colors", "${file}"],
+			"env": {
+				"NODE_ENV": "test"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "Relay Test Current File",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/relay/node_modules/mocha/bin/_mocha",
+			"cwd": "${workspaceFolder}/relay",
+			"args": [
+				"-w",
+				"-u",
+				"bdd",
+				"--colors",
+				"--timeout",
+				"999999",
+				"${file}"
+			],
+			"env": {
+				"NODE_ENV": "test",
+				"HOUSTON_API": "http://houston.test"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "Raisely Test Current File",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/relay/node_modules/mocha/bin/_mocha",
+			"cwd": "${workspaceFolder}/api",
+			"args": [
+				"-w",
+				"-u",
+				"bdd",
+				"--colors",
+				"--timeout",
+				"999999",
+				"${file}"
+			],
+			"env": {
+				"DEBUG_AUTHORIZATION": "1",
+				"NODE_ENV": "test"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Raisely API Test",
+			"program": "${workspaceFolder}/api/node_modules/gulp/bin/gulp.js",
+			"cwd": "${workspaceFolder}/api",
+			"args": ["v3", "--timeout", "999999", "--grep", "${input:grep}"],
+			"env": {
+				// "DEBUG_SQL": "1",
+				// "DEBUG_AUTHORIZATION": "1",
+				"NODE_ENV": "test"
+			},
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.17.0/bin/node"
+		},
+		{
+			"name": "[API] Docker: Attach to Node",
+			"type": "node",
+			"request": "attach",
+			"port": 9229,
+			"address": "localhost",
+			"localRoot": "${workspaceFolder}/api",
+			"remoteRoot": "/home/app",
+			"protocol": "inspector",
+			"restart": true
+		}
+	]
+}
